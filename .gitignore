@@ -1,0 +1,6 @@
+.DS_Store
+.pylintrc
+__pycache__/
+*.pyc
+
+resume/*

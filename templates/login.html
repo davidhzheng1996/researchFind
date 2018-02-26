@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block heading %}<div class="container">
+<div class="page-hearder">Log In</div></div>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-14">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="{{url_for('login')}}" method="POST">
+            {{form.csrf_token}}
+            <table>
+              <tr>
+                <td>
+                  {{form.netid.label}}:
+                </td>
+                <td>
+                  {{form.netid}}
+                  {% if form.netid.errors %}
+                  <ul>{% for error in form.netid.errors %}<li>{{error}}</li>{% endfor %}</ul>
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {{form.password.label}}:
+                </td>
+                <td>
+                  {{form.password}}
+                  {% if form.password.errors %}
+                  <ul>{% for error in form.password.errors %}<li>{{error}}</li>{% endfor %}</ul>
+                  {% endif %}
+                </td>
+              </tr>
+            </table>
+            <hr/>
+            <input type="submit" value="Submit"/>
+            {% if 'database' in form.errors %}<p>{{form.errors['database']}}</p>{% endif %}
+            </p>
+            <p>
+              <a href="{{url_for('signup')}}">Do not have an account yet?</a>
+            </p>
+          </form>
+        </div><!--/panel-body-->
+      </div><!--/panel-->
+    </div>
+  </div>
+</div>
+{% endblock %}
